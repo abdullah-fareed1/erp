@@ -6,10 +6,10 @@ services:
     container_name: erpgo_app
     ports:
       - "8000:80"
-    volumes:
-      - .:/var/www/html
     depends_on:
       - db
+    environment:
+      APP_ENV: production
 
   db:
     image: mysql:5.7
@@ -18,8 +18,6 @@ services:
     environment:
       MYSQL_DATABASE: erpgo
       MYSQL_ROOT_PASSWORD: root
-    ports:
-      - "3307:3306"
     volumes:
       - dbdata:/var/lib/mysql
 
